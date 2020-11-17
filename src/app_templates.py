@@ -2,6 +2,7 @@ bl_info = {
     "name": "Create App Template",
     "blender": (2, 80, 0),
     "category": "Import-Export",
+    "description": "Creates a new app template from the current blend file."
 }
 
 import os
@@ -11,7 +12,7 @@ from pathlib import Path
 import bpy
 
 class WM_saveAppTemplate(bpy.types.Operator):
-    """Saves the current layout as a new app template."""
+    """Saves the current blend file as a new app template."""
     bl_label = "Create an app template using the current blend file."
     bl_idname = "wm.saveapptemplate"
     template_name = bpy.props.StringProperty(name='Template Name',
@@ -32,7 +33,8 @@ class WM_saveAppTemplate(bpy.types.Operator):
 
 def draw_menu(self, context):
     self.layout.separator()
-    self.layout.operator(WM_saveAppTemplate.bl_idname, text="+ New App Template")
+    self.layout.operator(WM_saveAppTemplate.bl_idname, text="+ Create New App Template")
+
 
 def register():
     bpy.utils.register_class(WM_saveAppTemplate)
